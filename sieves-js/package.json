@@ -1,8 +1,7 @@
 {
   "name": "sieves-js",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "JS Package to support sieves ruby gem",
-  "main": "index.js",
   "repository": {
     "url": "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js",
     "type": "git"
@@ -14,5 +13,16 @@
   "license": "MIT",
   "private": false,
   "bugs": "https://github.com/kuartz-org/sieves-lib/issues",
-  "homepage": "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js"
+  "homepage": "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js",
+  "scripts": {
+    "build": "microbundle --globals stimulus=Stimulus",
+    "dev": "microbundle watch",
+    "prepublish": "yarn build",
+    "test": "NODE_ENV=test jest"
+  },
+  "source": "src/index.js",
+  "main": "dist/sieves-js.js",
+  "exports": "./dist/sieves-js.modern.js",
+  "module": "dist/sieves-js.module.js",
+  "unpkg": "dist/sieves-js.umd.js"
 }

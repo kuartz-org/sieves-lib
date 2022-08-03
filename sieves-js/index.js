@@ -1,2 +1,2 @@
-import "@hotwired/turbo-rails"
+console.log("hello from sieve-js");
 import "controllers"

@@ -1,0 +1,67 @@
+= turbo_frame_tag filterable.turbo_frame_id do
+  .w-fit
+    = form_with url: submit_path,
+                data: { controller: "filterable", filterable_filters_path_value: sieves.filterable_filters_path(filterable.model) },
+                id: filterable.form_id,
+                method: :get do |f|
+      = current_sort_input(f)
+
+      = f.hidden_field "filterable[submit_path]", value: submit_path
+      .px-5.py-3
+        - filters.each_with_index do |filter, index|
+          .flex.gap-2.mb-1
+            .w-20.grow.shrink-0.flex.justify-center.items-center.text-sm
+              - current_conjonction = filterable_params[:conjonction] || "and"
+              - if index.zero?
+                span.w-full.pl-3 = t("filterable.when")
+              - elsif index == 1
+                = f.select "filterable[conjonction]",
+                          [[t("filterable.and"), "and"], [t("filterable.or"), "or"]],
+                          { selected: current_conjonction },
+                          class: filterable_input_classes,
+                          onchange: "form.filterablerefresh.click()",
+                          data: { action: "change->filterable#updateConjonction"}
+              - else
+                span.w-full.pl-5 data-filterable-target="conjonction"
+                  = t("filterable.#{current_conjonction}")
+
+            = f.select "filterable[filters][][column_name]",
+                      filterable.columns_for_select,
+                      { selected: filter.column.name },
+                      class: filterable_input_classes,
+                      style: "flex: content;",
+                      onchange: "form.filterablerefresh.click()",
+                      data: { action: "change->filterable#updateColumn", filterable_index_param: index }
+
+            = f.select "filterable[filters][][operator]",
+                      filter.operators_options,
+                      { selected: filter.operator },
+                      class: filterable_input_classes,
+                      onchange: "form.filterablerefresh.click()",
+                      data: { action: "change->filterable#updateOperator", filterable_index_param: index }
+
+            = filterable_value_input(f, filter, index)
+
+            .w-5.grow.shrink-0.flex.justify-center.items-center
+              - if true || index.positive?
+                = button_tag type: "submit",
+                             class: "text-red-500",
+                             formmethod: :delete,
+                             formaction: sieves.filterable_filter_path(filterable.model, index) do
+                  = render "icons/trash"
+        .mt-2
+          = button_tag type: "submit",
+                      formaction: sieves.filterable_filters_path(filterable.model),
+                      formmethod: :post,
+                      class: "text-sm text-gray-900 font-semibold hover:underline" do
+            = render "icons/plus"
+            = t("filterable.add_filter")
+
+      = button_tag "refresh", type: "submit",
+                      id:"filterablerefresh",
+                      formaction: sieves.filterable_filters_path(filterable.model),
+                      class: "hidden"
+
+      .flex.justify-end.items-center.gap-5.bg-gray-50.px-5.py-3
+        = link_to t("filterable.reset_filters"), submit_path, class: "text-sm text-gray-900 opacity-70 font-semibold hover:underline hover:opacity-100",  data: { turbo_frame: "_top" }
+        = f.submit t("filterable.search"), class: "btn btn-secondary",  data: { turbo_frame: "_top", filterable_target: "submitBtn" }

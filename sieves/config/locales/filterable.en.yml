@@ -1,0 +1,47 @@
+en:
+  filterable:
+    filter: Filter
+    filters: Filters
+    active_filters:
+      one: 1 filter active
+      other: "%{count} filters active"
+    when: Where
+    and: and
+    or: or
+    add_filter: Add filter
+    search: Filter
+    reset_filters: reset filters
+    operators:
+      equality: &equality
+        equal: is
+        not_equal: is not
+      emptyness: &emptyness
+        empty: is empty
+        not_empty: is not empty
+      string:
+        <<: *equality
+        <<: *emptyness
+        contains: contains
+      number:
+        <<: *emptyness
+        equal: "="
+        not_equal: "≠"
+        gt: ">"
+        gteq: "≥"
+        lt: "<"
+        lteq: "≤"
+      date:
+        <<: *emptyness
+        equal: is on
+        not_equal: is not on
+        gt: is after
+        gteq: is on or after
+        lt: is before
+        lteq: is on or before
+      association:
+        <<: *equality
+        <<: *emptyness
+      boolean:
+        equal: est
+        true: True
+        false: False

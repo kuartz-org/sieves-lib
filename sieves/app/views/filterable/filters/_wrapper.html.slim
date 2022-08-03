@@ -1,0 +1,21 @@
+css:
+  #filterable-btn:checked + section {
+    display: block;
+  }
+
+script src="https://cdn.tailwindcss.com"
+
+= label_tag nil,
+            for: "filterable-btn",
+            class: [Sieves::Filterable.btn_classes, (Sieves::Filterable.btn_active_classes if filterable_active_filters?)] do
+  - if filterable_active_filters?
+    = t("filterable.active_filters", count: filterable_params[:filters].length)
+  - else
+    = t("filterable.filter")
+input.hidden id="filterable-btn" type="checkbox"
+section.mt-1.bg-white.rounded-md.shadow-md.w-fit.fixed.z-10.ring-1.ring-gray-900.ring-opacity-5.hidden.overflow-hidden
+  header.px-5.py-3.font-medium.text-gray-900.border-b.flex.justify-between.items-center
+    = t("filterable.filters")
+    = label_tag nil, for: "filterable-btn", class: "cursor-pointer text-gray-500 hover:text-gray-800" do
+      = render "icons/times"
+  = yield

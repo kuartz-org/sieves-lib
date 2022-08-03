@@ -1,0 +1,18 @@
+{
+  "name": "sieves-js",
+  "version": "1.0.0",
+  "description": "JS Package to support sieves ruby gem",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js",
+    "type": "git"
+  },
+  "author": "Guillaume CABANEL <guillaume@kuartz.fr>",
+  "contributors": [
+    "Pierre Gabriel TISSOT <pagehey@pm.me>"
+  ],
+  "license": "MIT",
+  "private": false,
+  "bugs": "https://github.com/kuartz-org/sieves-lib/issues",
+  "homepage": "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js"
+}

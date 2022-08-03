@@ -1,1 +1,1 @@
-{"version":3,"file":"sieves-js.umd.js","sources":["../src/index.js"],"sourcesContent":["console.log(\"hello there!\")\n"],"names":["console","log"],"mappings":"6EAAAA,QAAQC,IAAI"}
+{"version":3,"file":"sieves-js.umd.js","sources":["../src/index.js"],"sourcesContent":["// import HelloController from './controllers/hello_controller';\n// export { HelloController };\nconsole.log(\"hello\")\n"],"names":["console","log"],"mappings":"6EAEAA,QAAQC,IAAI"}

@@ -24,5 +24,11 @@
   "main": "dist/sieves-js.js",
   "exports": "./dist/sieves-js.modern.js",
   "module": "dist/sieves-js.module.js",
-  "unpkg": "dist/sieves-js.umd.js"
+  "unpkg": "dist/sieves-js.umd.js",
+  "dependencies": {
+    "stimulus": "^3.1.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.15.0"
+  }
 }

@@ -1,2 +1,2 @@
-console.log("hello there!");
+console.log("hello");
 //# sourceMappingURL=sieves-js.cjs.map

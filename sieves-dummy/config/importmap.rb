@@ -5,4 +5,4 @@ pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
 pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
-pin "sieves-js", to: "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js/index.js"
+pin "sieves-js", to: "http://127.0.0.1:8000/dist/sieves-js.js"

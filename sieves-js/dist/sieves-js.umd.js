@@ -1,2 +1,2 @@
-!function(e){"function"==typeof define&&define.amd?define(e):e()}(function(){console.log("hello there!")});
+!function(n){"function"==typeof define&&define.amd?define(n):n()}(function(){console.log("hello")});
 //# sourceMappingURL=sieves-js.umd.js.map

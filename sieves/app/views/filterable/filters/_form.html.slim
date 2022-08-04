@@ -19,8 +19,7 @@
                           [[t("filterable.and"), "and"], [t("filterable.or"), "or"]],
                           { selected: current_conjonction },
                           class: filterable_input_classes,
-                          onchange: "form.filterablerefresh.click()",
-                          data: { action: "change->filterable#updateConjonction"}
+                          data: { action: "change->filterable--form#updateConjonction"}
               - else
                 span.w-full.pl-5 data-filterable-target="conjonction"
                   = t("filterable.#{current_conjonction}")
@@ -30,15 +29,13 @@
                       { selected: filter.column.name },
                       class: filterable_input_classes,
                       style: "flex: content;",
-                      onchange: "form.filterablerefresh.click()",
-                      data: { action: "change->filterable#updateColumn", filterable_index_param: index }
+                      data: { action: "change->filterable--form#updateColumn", filterable_index_param: index }
 
             = f.select "filterable[filters][][operator]",
                       filter.operators_options,
                       { selected: filter.operator },
                       class: filterable_input_classes,
-                      onchange: "form.filterablerefresh.click()",
-                      data: { action: "change->filterable#updateOperator", filterable_index_param: index }
+                      data: { action: "change->filterable--form#updateOperator", filterable_index_param: index }
 
             = filterable_value_input(f, filter, index)
 
@@ -56,11 +53,6 @@
                       class: "text-sm text-gray-900 font-semibold hover:underline" do
             = render "icons/plus"
             = t("filterable.add_filter")
-
-      = button_tag "refresh", type: "submit",
-                      id:"filterablerefresh",
-                      formaction: sieves.filterable_filters_path(filterable.model),
-                      class: "hidden"
 
       .flex.justify-end.items-center.gap-5.bg-gray-50.px-5.py-3
         = link_to t("filterable.reset_filters"), submit_path, class: "text-sm text-gray-900 opacity-70 font-semibold hover:underline hover:opacity-100",  data: { turbo_frame: "_top" }

@@ -157,8 +157,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3.1)
-    rack-cors (1.1.1)
-      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.3)
@@ -257,7 +255,6 @@ DEPENDENCIES
   pry-doc
   pry-rails
   puma (~> 5.0)
-  rack-cors
   rails (~> 7.0.2, >= 7.0.2.3)
   redis (~> 4.0)
   selenium-webdriver
@@ -269,9 +266,10 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
+  webrick
 
 RUBY VERSION
    ruby 3.0.3p157
 
 BUNDLED WITH
-   2.3.9
+   2.3.13

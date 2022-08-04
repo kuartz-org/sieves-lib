@@ -47,8 +47,6 @@ gem "bootsnap", require: false
 
 gem "sieves", path: "../sieves"
 
-gem 'rack-cors'
-
 gem "slim"
 
 

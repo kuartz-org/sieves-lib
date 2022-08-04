@@ -11,12 +11,11 @@
     "Pierre Gabriel TISSOT <pagehey@pm.me>"
   ],
   "license": "MIT",
-  "private": false,
   "bugs": "https://github.com/kuartz-org/sieves-lib/issues",
   "homepage": "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js",
   "scripts": {
     "build": "microbundle --globals stimulus=Stimulus",
-    "dev": "microbundle watch",
+    "dev": "microbundle watch & ruby server.rb",
     "prepublish": "yarn build",
     "test": "NODE_ENV=test jest"
   },

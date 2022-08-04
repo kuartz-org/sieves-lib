@@ -1,7 +1,7 @@
 = turbo_frame_tag filterable.turbo_frame_id do
   .w-fit
     = form_with url: submit_path,
-                data: { controller: "filterable", filterable_filters_path_value: sieves.filterable_filters_path(filterable.model) },
+                data: { controller: "filterable--form", filterable_filters_path_value: sieves.filterable_filters_path(filterable.model) },
                 id: filterable.form_id,
                 method: :get do |f|
       = current_sort_input(f)

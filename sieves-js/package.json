@@ -25,7 +25,7 @@
   "module": "dist/sieves-js.module.js",
   "unpkg": "dist/sieves-js.umd.js",
   "dependencies": {
-    "stimulus": "^3.1.0"
+    "@hotwired/stimulus": "^3.1.0"
   },
   "devDependencies": {
     "microbundle": "^0.15.0"

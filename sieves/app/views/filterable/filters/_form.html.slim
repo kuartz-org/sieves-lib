@@ -40,12 +40,11 @@
             = filterable_value_input(f, filter, index)
 
             .w-5.grow.shrink-0.flex.justify-center.items-center
-              - if true || index.positive?
-                = button_tag type: "submit",
-                             class: "text-red-500",
-                             formmethod: :delete,
-                             formaction: sieves.filterable_filter_path(filterable.model, index) do
-                  = render "icons/trash"
+              = button_tag type: "submit",
+                            class: "text-red-500",
+                            formmethod: :delete,
+                            formaction: sieves.filterable_filter_path(filterable.model, index) do
+                = render "icons/trash"
         .mt-2
           = button_tag type: "submit",
                       formaction: sieves.filterable_filters_path(filterable.model),

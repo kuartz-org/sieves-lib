@@ -9,15 +9,15 @@ export default class extends Controller {
 
   updateColumn({ params }) {
     this.submitBtnTarget.innerHTML = "loader"
-    this.#getValueInput(params.index).disabled = true
+    this.getValueInput(params.index).disabled = true
 
-    this.#refreshForm()
+    this.refreshForm()
   }
 
   updateOperator({ target, params }) {
     const operatorNeedsInput = !['empty', 'not_empty'].includes(target.value)
 
-    const valueInput = this.#getValueInput(params.index)
+    const valueInput = this.getValueInput(params.index)
     if (operatorNeedsInput) {
       valueInput.style.removeProperty('display')
       valueInput.disabled = false
@@ -28,17 +28,18 @@ export default class extends Controller {
   }
 
   updateConjonction({ target: { options, selectedIndex }}) {
+    console.log("updateConjonction", this.conjonctionTargets);
     const conjonctionText = options[selectedIndex].text
     this.conjonctionTargets.forEach((conjonctionTarget) => {
       conjonctionTarget.innerText = conjonctionText
     })
   }
 
-  #getValueInput(index) {
+  getValueInput(index) {
     return this.element.querySelector(`[data-value-input-index="${index}"]`)
   }
 
-  #refreshForm() {
+  refreshForm() {
     const url = new URL(window.origin + this.filtersPathValue)
     const formData = new FormData(this.element)
     for (const [key, value] of formData.entries()) { url.searchParams.append(key, value) }

@@ -1,7 +1,7 @@
 = turbo_frame_tag filterable.turbo_frame_id do
   .w-fit
     = form_with url: submit_path,
-                data: { controller: "filterable--form", filterable_filters_path_value: sieves.filterable_filters_path(filterable.model) },
+                data: { controller: "filterable--form", filterable__form_filters_path_value: sieves.filterable_filters_path(filterable.model) },
                 id: filterable.form_id,
                 method: :get do |f|
       = current_sort_input(f)
@@ -21,7 +21,7 @@
                           class: filterable_input_classes,
                           data: { action: "change->filterable--form#updateConjonction"}
               - else
-                span.w-full.pl-5 data-filterable-target="conjonction"
+                span.w-full.pl-5 data-filterable--form-target="conjonction"
                   = t("filterable.#{current_conjonction}")
 
             = f.select "filterable[filters][][column_name]",
@@ -29,13 +29,13 @@
                       { selected: filter.column.name },
                       class: filterable_input_classes,
                       style: "flex: content;",
-                      data: { action: "change->filterable--form#updateColumn", filterable_index_param: index }
+                      data: { action: "change->filterable--form#updateColumn", filterable__form_index_param: index }
 
             = f.select "filterable[filters][][operator]",
                       filter.operators_options,
                       { selected: filter.operator },
                       class: filterable_input_classes,
-                      data: { action: "change->filterable--form#updateOperator", filterable_index_param: index }
+                      data: { action: "change->filterable--form#updateOperator", filterable__form_index_param: index }
 
             = filterable_value_input(f, filter, index)
 
@@ -55,4 +55,4 @@
 
       .flex.justify-end.items-center.gap-5.bg-gray-50.px-5.py-3
         = link_to t("filterable.reset_filters"), submit_path, class: "text-sm text-gray-900 opacity-70 font-semibold hover:underline hover:opacity-100",  data: { turbo_frame: "_top" }
-        = f.submit t("filterable.search"), class: "btn btn-secondary",  data: { turbo_frame: "_top", filterable_target: "submitBtn" }
+        = f.submit t("filterable.search"), class: "btn btn-secondary",  data: { turbo_frame: "_top", filterable__form_target: "submitBtn" }

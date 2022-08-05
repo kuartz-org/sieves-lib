@@ -1,8 +1,8 @@
 import controllers from "./controllers"
 
 const controllersRegistration = (application) => {
-  Object.values(controllers).forEach(controller => {
-    application.register(controller.name, controller)
+  Object.keys(controllers).forEach(controllerName => {
+    application.register(controllerName, controllers[controllerName])
   })
 }
 

@@ -14,20 +14,13 @@
   "bugs": "https://github.com/kuartz-org/sieves-lib/issues",
   "homepage": "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js",
   "scripts": {
-    "build": "microbundle --globals stimulus=Stimulus",
-    "dev": "microbundle watch & ruby server.rb",
-    "prepublish": "yarn build",
-    "test": "NODE_ENV=test jest"
+    "build": "esbuild src/index.js --format=esm --bundle --sourcemap --outfile=dist/sieves-js.js",
+    "dev": "esbuild src/index.js --format=esm --outfile=dist/sieves-js.js --bundle --sourcemap --serve=8000"
   },
-  "source": "src/index.js",
-  "main": "dist/sieves-js.js",
-  "exports": "./dist/sieves-js.modern.js",
-  "module": "dist/sieves-js.module.js",
-  "unpkg": "dist/sieves-js.umd.js",
   "dependencies": {
     "@hotwired/stimulus": "^3.1.0"
   },
   "devDependencies": {
-    "microbundle": "^0.15.0"
+    "esbuild": "^0.14.53"
   }
 }

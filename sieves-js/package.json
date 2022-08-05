@@ -1,6 +1,6 @@
 {
   "name": "sieves-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JS Package to support sieves ruby gem",
   "repository": {
     "url": "https://github.com/kuartz-org/sieves-lib/tree/main/sieves-js",

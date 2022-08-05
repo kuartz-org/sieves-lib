@@ -2,6 +2,41 @@
 
 Ruby gem and JS package including filtering tools with GUI for rails.
 
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem "sieves"
+```
+
+And then execute:
+
+```bash
+bundle
+```
+
+Or install it yourself as:
+
+```bash
+gem install sieves
+```
+
+Pin the associated JS package:
+
+```shell
+bin/importmap pin sieves-js
+```
+
+Add this to app/javascript/controllers/index.js:
+
+```js
+// app/javascript/controllers/index.js
+// ...
+import * as sieves from "sieves-js"
+sieves.controllersRegistration(application)
+```
+
 ## Usage
 
 Configure the model:
@@ -57,32 +92,6 @@ In the controller:
     includes(reviews: [:summary, :content]).
     order("reviews.created_at DESC").
     with_attached_cover_image
-```
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem "sieves"
-```
-
-And then execute:
-
-```bash
-bundle
-```
-
-Or install it yourself as:
-
-```bash
-gem install sieves
-```
-
-Pin the associated JS package:
-
-```shell
-bin/importmap pin sieves-js
 ```
 
 ## License

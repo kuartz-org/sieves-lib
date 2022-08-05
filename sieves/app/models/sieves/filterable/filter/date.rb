@@ -5,17 +5,21 @@ module Sieves
     class Filter
       class Date < Filter
         operator("equal") do
-          return arel_column.eq(cast_value) unless datetime_column?
-
-          all_day = cast_value
-          arel_column.gteq(all_day.begin).and(arel_column.lteq(all_day.end))
+          if datetime_column?
+            all_day = cast_value
+            arel_column.gteq(all_day.begin).and(arel_column.lteq(all_day.end))
+          else
+            arel_column.eq(cast_value)
+          end
         end
 
         operator("not_equal") do
-          return arel_column.not_eq(cast_value) unless datetime_column?
-
-          all_day = cast_value
-          arel_column.lt(all_day.begin).or(arel_column.gt(all_day.end))
+          if datetime_column?
+            all_day = cast_value
+            arel_column.lt(all_day.begin).or(arel_column.gt(all_day.end))
+          else
+            arel_column.not_eq(cast_value)
+          end
         end
 
         operator("gt") { arel_column.gt(cast_value) }

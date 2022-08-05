@@ -28,7 +28,6 @@ export default class extends Controller {
   }
 
   updateConjonction({ target: { options, selectedIndex }}) {
-    console.log("updateConjonction", this.conjonctionTargets);
     const conjonctionText = options[selectedIndex].text
     this.conjonctionTargets.forEach((conjonctionTarget) => {
       conjonctionTarget.innerText = conjonctionText

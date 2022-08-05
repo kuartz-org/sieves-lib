@@ -33,11 +33,9 @@ module Sieves
       end
 
       def render_form
-        render partial: "filterable/filters/form", locals: {
-          filters: @filters,
-          filterable: @model.filterable,
-          submit_path: filterable_params[:submit_path]
-        }
+        respond_to do |format|
+          format.turbo_stream { render "filterable/filters/show" }
+        end
       end
     end
   end

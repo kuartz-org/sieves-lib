@@ -4,6 +4,8 @@ Ruby gem and JS package including filtering tools with GUI for rails.
 
 ## Installation
 
+_⚠️ Requires **Hotwire**
+
 Add this line to your application's Gemfile:
 
 ```ruby
